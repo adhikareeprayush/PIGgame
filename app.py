@@ -25,6 +25,7 @@ player_scores = [0 for _ in range(players)]
 
 while max(player_scores) < max_score:
     for player_idx in range(players):
+        current_score = player_scores[player_idx]
         should_roll = input("Yould you like to roll dice again? (Y/N):")
         if should_roll.lower() != 'y':
             break
@@ -34,6 +35,15 @@ while max(player_scores) < max_score:
             print("You rolled a 1! Turn done")
         else:
             current_score += value
+            print(f"Player {player_idx+1} score is {current_score}")
+            player_scores[player_idx] = current_score
+
+        if current_score >= max_score:
+            print(f"Player {player_idx + 1} wins!")
+            break
+
+print("Game over")
+
 
 
 
